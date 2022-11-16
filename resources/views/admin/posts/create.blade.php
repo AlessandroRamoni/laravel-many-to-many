@@ -45,6 +45,15 @@
             @enderror
         </div>
         <input type="submit" value="Create">
+
+        <div @error('tags') class="is-invalid" @enderror>
+            <label>Tags:</label>
+            @foreach ($tags as $tag)
+                <label>{{ $tag->name }}</label>
+                <input type="checkbox" name="tags[]" value={{ $tag->id }}>
+            @endforeach
+        </div>
+
     </form>
     <div class="mt-5">
         <a href="{{ route('admin.posts.index') }}">BACK TO THE POSTS LIST</a>
