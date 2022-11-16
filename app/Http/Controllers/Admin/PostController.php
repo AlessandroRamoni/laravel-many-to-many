@@ -138,9 +138,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+        $post->tag()->sync([]);
         $post->delete();
         return redirect()->route('admin.posts.index');
     }
+
+
     private function getSlug($title){
         $slug = Str::slug($title);
         $slug_base = $slug;
